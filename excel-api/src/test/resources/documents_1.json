@@ -1,0 +1,82 @@
+[
+  {
+    "d2o": "Yes",
+    "predose": "85.4",
+    "bottle_num": "20",
+    "weight_dose": "56.25",
+    "year": "2020",
+    "participant_id": "N0102G",
+    "sex": "Female",
+    "weight": "66.5",
+    "dose_ppm": "111224.0",
+    "d_visit": "2018-06-10",
+    "time": "12:43",
+    "height": "160.6"
+  },
+  {
+    "d2o": "Yes",
+    "predose": "87.3",
+    "bottle_num": "18",
+    "weight_dose": "56.156",
+    "year": "2018",
+    "participant_id": "N0103G",
+    "sex": "Male",
+    "weight": "49.5",
+    "dose_ppm": "111224.0",
+    "d_visit": "2018-06-11",
+    "time": "12:47",
+    "height": "157.7"
+  },
+  {
+    "d2o": "Yes",
+    "predose": "89.4",
+    "bottle_num": "1",
+    "weight_dose": "56.018",
+    "year": "2018",
+    "participant_id": "N0101G",
+    "sex": "Female",
+    "weight": "64.9",
+    "dose_ppm": "111224.0",
+    "d_visit": "2018-06-12",
+    "time": "09:32",
+    "height": "164.5"
+  },
+  {
+    "d2o": "No",
+    "year": "2019",
+    "participant_id": "N0106G",
+    "sex": "Female",
+    "weight": "45.85",
+    "d_visit": "2019-05-21",
+    "time": "09:21",
+    "height": "101.3"
+  },
+  {
+    "d2o": "Yes",
+    "predose": "89.7",
+    "bottle_num": "15",
+    "weight_dose": "56.284",
+    "year": "2018",
+    "participant_id": "N0104G",
+    "sex": "Male",
+    "weight": "52.2",
+    "dose_ppm": "111224.0",
+    "d_visit": "2018-06-12",
+    "time": "12:47",
+    "height": "156.7"
+  },
+  {
+    "d2o": "Yes",
+    "predose": "92.6",
+    "bottle_num": "16",
+    "weight_dose": "56.093",
+    "year": "2018",
+    "participant_id": "N0105G",
+    "sex": "Female",
+    "weight": "75.1",
+    "dose_ppm": "111224.0",
+    "d_visit": "2018-07-28",
+    "time": "12:53",
+    "height": "161.0"
+  }
+]
