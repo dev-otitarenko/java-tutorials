@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.util.*;
 
 public class ExcelWriter {
-    public static byte[] writeFile(final List<String> columns, final List<HashMap<String, Object>> data) throws IOException {
+    public static byte[] writeFile(final List<String> columns, final List<Map<String, Object>> data) throws IOException {
         File tmpFile = File.createTempFile("data", ".xlsx");
         Workbook wb = new XSSFWorkbook();
         Sheet sheet = wb.createSheet("Query");
@@ -24,21 +24,21 @@ public class ExcelWriter {
             CellStyle hdrRowStyle = ExcelUtils.getHeaderStyle(sheet);
             Row row = sheet.createRow(0);
             int ncol = 0;
-            ExcelUtils.setHeaderCell(row, 0, "", hdrRowStyle);
+           // ExcelUtils.setHeaderCell(row, 0, "", hdrRowStyle);
             for (String col : columns) {
-                ExcelUtils.setHeaderCell(row, ++ncol, col, hdrRowStyle);
+                ExcelUtils.setHeaderCell(row, ncol++, col, hdrRowStyle);
             }
         }
 
         {
             int nrow = 1;
-            for (HashMap<String, Object> rdata : data) {
+            for (Map<String, Object> rdata : data) {
                 Row row = sheet.createRow(++nrow);
                 int ncol = 0;
-                ExcelUtils.setDataCell(row, 0, nrow - 1, dataStyle);
+              //  ExcelUtils.setDataCell(row, 0, nrow - 1, dataStyle);
 
                 for (String col : columns) {
-                    fillDataCell(dataStyle, row, ++ncol, rdata.get(col));
+                    fillDataCell(dataStyle, row, ncol++, rdata.get(col));
                 }
             }
         }

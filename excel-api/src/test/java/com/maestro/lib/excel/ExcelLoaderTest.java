@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Type;
 import java.util.*;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.fail;
@@ -22,8 +23,8 @@ public class ExcelLoaderTest {
 		InputStream excelFile = (new TestUtils()).getResourceFile(sourceFileName);
 		byte[] content = TestUtils.getFileContent((new TestUtils()).getResourceFile(targetFileName));
 		Gson gson = new Gson();
-		Type typeListOfMap = new TypeToken<List<Map<String, String>>>() {}.getType();
-		List<Map<String, String>> targetData = gson.fromJson(new String(content), typeListOfMap);
+		Type typeListOfMap = new TypeToken<TestUtils.TJsonFile>() {}.getType();
+		TestUtils.TJsonFile targetData = gson.fromJson(new String(content), typeListOfMap);
 
 		try {
 			ExcelLoader xlsUtil = new ExcelLoader();
@@ -31,11 +32,9 @@ public class ExcelLoaderTest {
 			List<Map<String, String>> docs = xlsUtil.getData();
 			List<String> params = xlsUtil.getParams();
 
-			System.out.println(" << *** Fields:");
-			params.forEach(System.out::println);
-			System.out.println(" *** >> ");
+			System.out.printf("<< Fields: %s >>\n", TestUtils.prettyJson(params));
+			System.out.println(" << Records count: " + docs.size());
 
-			System.out.println(" << *** Records count: " + docs.size());
 			docs.forEach(sourceData -> {
 				StringBuilder sb = new StringBuilder();
 
@@ -43,12 +42,22 @@ public class ExcelLoaderTest {
 				sourceData.forEach((nm, val) -> sb.append(String.format("\n\t\t\t \"%s\":\"%s\"", nm, val)));
 				sb.append("\n\t ]");
 
-				checkWithEtalonData(sourceData, targetData);
+				checkWithEtalonData(sourceData, targetData.getData());
 
-				System.out.printf(" \t Document data %s%n", sb.toString());
+				System.out.printf("<< Document data %s%n", sb.toString());
 			});
 		} catch (IOException e) {
 			e.printStackTrace();
+		}
+	}
+
+	private void checkHeaders(final List<String> sourceParams, final List<String> targetParams) {
+		List<String> resp =
+		sourceParams
+				.stream()
+				.filter(h -> !h.startsWith("GENERATE") && targetParams.contains(h)).collect(Collectors.toList());
+		if (resp.size() == 0 || (resp.size() != targetParams.size())) {
+			fail("resp.size() != targetParams.size()");
 		}
 	}
 
