@@ -3,11 +3,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.maestro.lib</groupId>
-    <artifactId>smaples-api</artifactId>
+    <artifactId>java-samples-lib-api</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <modules>
+        <module>css-parser</module>
         <module>junit5-lib-json</module>
         <module>excel-api</module>
     </modules>
