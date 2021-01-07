@@ -8,9 +8,9 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>css-parser</module>
+        <module>css-parser-2015</module>
         <module>excel-api</module>
-        <module>ua-common-utils</module>
+        <module>ua-common-utils-2009</module>
         <module>ua-taxdocs-xml-utils-2015</module>
         <module>ua-taxdocs-html-utils-2016</module>
     </modules>
