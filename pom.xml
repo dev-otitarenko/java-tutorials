@@ -8,6 +8,7 @@
     <packaging>pom</packaging>
 
     <modules>
+        <module>css-parser</module>
         <module>junit5-lib-json</module>
         <module>excel-api</module>
     </modules>

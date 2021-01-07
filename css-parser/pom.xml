@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.maestro.lib.cssparser</groupId>
-    <artifactId>cssparser</artifactId>
+    <artifactId>css-parser-lib</artifactId>
     <version>1.4.0</version>
     <packaging>jar</packaging>
 
@@ -25,7 +25,6 @@
 
     <build>
         <plugins>
-
             <!-- Need at least 2.22.0 to support JUnit 5 -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
