@@ -9,7 +9,9 @@
 
     <modules>
         <module>css-parser</module>
-        <module>junit5-lib-json</module>
         <module>excel-api</module>
+        <module>ua-common-utils</module>
+        <module>ua-taxdocs-xml-utils-2015</module>
+        <module>ua-taxdocs-html-utils-2016</module>
     </modules>
 </project>
