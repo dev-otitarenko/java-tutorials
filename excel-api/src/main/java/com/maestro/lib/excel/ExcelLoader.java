@@ -48,7 +48,7 @@ public class ExcelLoader {
 	private void outputHeaderRow (Iterator cells) {
 		while (cells.hasNext()) {
 			Cell cell = (Cell) cells.next();
-			String val = ExcelUtils.getCellValueAsString(cell);
+			final String val = ExcelUtils.getCellValueAsString(cell);
 			if (!StringUtils.isBlank(val)) {
 				_params.add(val);
 			} else {
@@ -68,21 +68,12 @@ public class ExcelLoader {
 			if (cnt > _params.size()) break;
 			currentCell = (Cell) cells.next();
 
-			String colName = this.getColumnName(currentCell.getColumnIndex()),
-					cellValue = ExcelUtils.getCellValueAsString(currentCell);
+			final String colName = currentCell.getColumnIndex() >= _params.size() ? null : _params.get(currentCell.getColumnIndex()),
+						 cellValue = ExcelUtils.getCellValueAsString(currentCell);
 			if (!StringUtils.isBlank(colName) && !StringUtils.isBlank(cellValue))
 				ret.put(colName, cellValue);
 		}
 
 		return ret;
-	}
-
-	private String getColumnName(int ind) {
-		for (int i = 0; i < this._params.size(); i++) {
-			if (i == ind) {
-				return this._params.get(i);
-			}
-		}
-		return null;
 	}
 }

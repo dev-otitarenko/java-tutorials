@@ -116,30 +116,29 @@ public class ExcelUtils {
     public static Integer getCellValueAsInteger(Cell cell) {
         Integer ret = null;
         if (cell != null) {
-            if (cell.getCellTypeEnum() == CellType.STRING) {
+            if (cell.getCellType() == CellType.STRING) {
                 double value = Double.parseDouble(cell.getStringCellValue());
                 ret = (int)value;
-            } else if (cell.getCellTypeEnum() == CellType.NUMERIC) {
+            } else if (cell.getCellType() == CellType.NUMERIC) {
                 double value = cell.getNumericCellValue();
                 ret = (int) value;
-            } else if (cell.getCellTypeEnum() == CellType.BOOLEAN) {
+            } else if (cell.getCellType() == CellType.BOOLEAN) {
                 ret = cell.getBooleanCellValue() ? 1 : 0;
             }
         }
         return ret;
     }
     
-   
     public static Double getCellValueAsNumber(Cell cell) {
         Double ret = null;
         if (cell != null) {
-            if (cell.getCellTypeEnum() == CellType.STRING) {
+            if (cell.getCellType() == CellType.STRING) {
                 ret = Double.parseDouble(cell.getStringCellValue());
-            } else if (cell.getCellTypeEnum() == CellType.NUMERIC) {
+            } else if (cell.getCellType() == CellType.NUMERIC) {
                 ret = cell.getNumericCellValue();
-            } else if (cell.getCellTypeEnum() == CellType.BOOLEAN) {
+            } else if (cell.getCellType() == CellType.BOOLEAN) {
                 ret = cell.getBooleanCellValue() ? Double.parseDouble("1") : Double.parseDouble("0");
-            } else if (cell.getCellTypeEnum() == CellType.BLANK) {
+            } else if (cell.getCellType() == CellType.BLANK) {
                 ret = null;
             }
         }
@@ -149,9 +148,9 @@ public class ExcelUtils {
     public static String getCellValueAsString(Cell cell) {
         String strCellValue = null;
         if (cell != null) {
-            if (cell.getCellTypeEnum() == CellType.STRING) {
+            if (cell.getCellType() == CellType.STRING) {
                 strCellValue = cell.getStringCellValue();
-            } else if (cell.getCellTypeEnum() == CellType.NUMERIC) {
+            } else if (cell.getCellType() == CellType.NUMERIC) {
                 if (DateUtil.isCellDateFormatted(cell)) {
                     SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd"); // 20022019
                     strCellValue = dateFormat.format(cell.getDateCellValue());
@@ -159,10 +158,10 @@ public class ExcelUtils {
                     double value = cell.getNumericCellValue();
                     strCellValue = new BigDecimal(value).stripTrailingZeros().toPlainString();
                 }
-            } else if (cell.getCellTypeEnum() == CellType.BOOLEAN) {
+            } else if (cell.getCellType() == CellType.BOOLEAN) {
                 strCellValue = String.valueOf(cell.getBooleanCellValue());
 
-            } else if (cell.getCellTypeEnum() == CellType.BLANK) {
+            } else if (cell.getCellType() == CellType.BLANK) {
                 strCellValue = "";
             }
         }
@@ -172,7 +171,7 @@ public class ExcelUtils {
     public static Date getCellValueAsDate(Cell cell) {
         Date strCellValue = null;
         if (cell != null) {
-            if (cell.getCellTypeEnum() == CellType.STRING) {
+            if (cell.getCellType() == CellType.STRING) {
                 String value = cell.getStringCellValue();
                 if (!StringUtils.isBlank(value)) {
                     SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -186,11 +185,11 @@ public class ExcelUtils {
                         }
                     }
                 }
-            } else if (cell.getCellTypeEnum() == CellType.NUMERIC) {
+            } else if (cell.getCellType() == CellType.NUMERIC) {
                 if (DateUtil.isCellDateFormatted(cell)) {
                     strCellValue = cell.getDateCellValue();
                 }
-            } else if (cell.getCellTypeEnum() == CellType.BLANK) {
+            } else if (cell.getCellType() == CellType.BLANK) {
                 strCellValue = null;
             }
         }
