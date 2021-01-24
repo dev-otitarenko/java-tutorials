@@ -7,6 +7,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+
 public class ExcelUtils {
     public static Cell setHeaderCell(Row hdrRow, int rn, String title, CellStyle style) {
         Cell cell = hdrRow.createCell(rn);
@@ -116,7 +117,7 @@ public class ExcelUtils {
     public static Integer getCellValueAsInteger(Cell cell) {
         Integer ret = null;
         if (cell != null) {
-            if (cell.getCellType() == CellType.STRING) {
+            if (cell.getCellType() == CellType.STRING && !cell.getStringCellValue().isEmpty()) {
                 double value = Double.parseDouble(cell.getStringCellValue());
                 ret = (int)value;
             } else if (cell.getCellType() == CellType.NUMERIC) {
@@ -132,7 +133,7 @@ public class ExcelUtils {
     public static Double getCellValueAsNumber(Cell cell) {
         Double ret = null;
         if (cell != null) {
-            if (cell.getCellType() == CellType.STRING) {
+            if (cell.getCellType() == CellType.STRING && !cell.getStringCellValue().isEmpty()) {
                 ret = Double.parseDouble(cell.getStringCellValue());
             } else if (cell.getCellType() == CellType.NUMERIC) {
                 ret = cell.getNumericCellValue();
@@ -160,7 +161,6 @@ public class ExcelUtils {
                 }
             } else if (cell.getCellType() == CellType.BOOLEAN) {
                 strCellValue = String.valueOf(cell.getBooleanCellValue());
-
             } else if (cell.getCellType() == CellType.BLANK) {
                 strCellValue = "";
             }
@@ -171,7 +171,7 @@ public class ExcelUtils {
     public static Date getCellValueAsDate(Cell cell) {
         Date strCellValue = null;
         if (cell != null) {
-            if (cell.getCellType() == CellType.STRING) {
+            if (cell.getCellType() == CellType.STRING && !cell.getStringCellValue().isEmpty()) {
                 String value = cell.getStringCellValue();
                 if (!StringUtils.isBlank(value)) {
                     SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
